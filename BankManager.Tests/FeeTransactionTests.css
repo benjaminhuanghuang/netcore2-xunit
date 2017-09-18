@@ -1,8 +1,8 @@
-using NUnit.Framework;
+using Xunit;
 
 namespace BankManager.Tests
 {
-    [TestFixture]
+    [Fact (Skip = "specific reason")]
     public class FeeTransactionTests : TransactionTests
     {
         public override Transaction GetTransactionWith(int baseAmount)
@@ -15,7 +15,7 @@ namespace BankManager.Tests
             return new FeeTransaction(baseAmount, fee);
         }
 
-        [Test]
+        [Fact]
         public void CalculateTotalTransaction_AmountAndFeeProvided_ReturnsAmountMinusFee()
         {
             const int baseAmount = 100;

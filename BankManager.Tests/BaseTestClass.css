@@ -1,12 +1,11 @@
 using Moq;
-using NUnit.Framework;
+using Xunit;
 
 namespace BankManager.Tests
 {
     public abstract class BaseTestClass
     {
-        [SetUp]
-        public virtual void SetUp()
+        public virtual void BaseTestClass()
         {
             Logging.Logger = Mock.Of<ILogger>();
         }

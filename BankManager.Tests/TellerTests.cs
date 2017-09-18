@@ -1,5 +1,7 @@
 using System;
 using Xunit;
+//
+using BankManager;
 
 namespace BankManager.Tests
 {
@@ -12,7 +14,7 @@ namespace BankManager.Tests
             var accountBalance = teller.CheckBalance();
 
             const int expectedBalance = 0;
-            Assert.That()
+            //Assert.That()
         }
     }
 }

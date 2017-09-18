@@ -3,21 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Xunit;
+//
+using BankManager;
 
 namespace BankManager.Tests
 {
-    [TestFixture]
+    [Fact (Skip = "specific reason")]
     public class AccountRepositoryTests
     {
         private AccountRepository _accountRepository;
-        [SetUp]
-        public void SetUp()
+        public void AccountRepositoryTests()
         {
             _accountRepository = new AccountRepository();
         }
 
-        [Test]
+        [Fact]
         public void GetBalance_WithNoTransactions_Returns0Balance()
         {
             var accountBalance = _accountRepository.GetBalance();
@@ -27,7 +28,7 @@ namespace BankManager.Tests
                  "Empty account should return a 0 balance.");
         }
 
-        [Test]
+        [Fact]
         public void ProcessTransaction_FirstTransaction_StoredTransactionsContainOnlyThatOneTransaction()
         {
             var transaction = new SimpleTransaction(10);
@@ -52,7 +53,6 @@ namespace BankManager.Tests
             }
         }
 
-        [TestCaseSource("Transactions")]
         public void GetBalance_WithOneTransaction_ReturnsTotalOfTransaction(Transaction transaction)
         {
             _accountRepository.ProcessTransaction(transaction);
@@ -64,7 +64,7 @@ namespace BankManager.Tests
                 "Balance of one transaction should equal the total of that one transaction.");
         }
 
-        [Test]
+        [Fact]
         public void GetTransactions_ZeroTransactionIsNotPartOfTransactionList()
         {
             _accountRepository.ProcessTransaction(new SimpleTransaction(0));

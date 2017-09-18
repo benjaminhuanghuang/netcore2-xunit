@@ -1,8 +1,9 @@
-using NUnit.Framework;
+using Xunit;
+using BankManager;
 
 namespace BankManager.Tests
 {
-    [TestFixture]
+    [Fact (Skip = "specific reason")]
     public class SimpleTransactionTests : TransactionTests
     {
         public override Transaction GetTransactionWith(int baseAmount)
@@ -10,7 +11,7 @@ namespace BankManager.Tests
             return new SimpleTransaction(baseAmount);
         }
 
-        [Test]
+        [Fact]
         public void CalculateTotalTransaction_AmountProvided_ReturnsSameAmount()
         {
             const int baseAmount = 100;

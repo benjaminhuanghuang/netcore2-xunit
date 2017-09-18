@@ -1,11 +1,11 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace BankManager.Tests
 {
-    [TestFixture]
+    [Fact (Skip = "specific reason")]
     public class LoandAdvisorTests
     {
-        [Test]
+        [Fact]
         public void RequestApprovalFor_LoanAmountEqualToYearlyIncomeMinusTotalDebt_IsNotApproved()
         {
             const int loanAmountRequested = 100;
@@ -17,7 +17,7 @@ namespace BankManager.Tests
             Assert.That(loanDetails, Is.EqualTo(LoanDetailsDefaults.UnapprovedDetails));
         }
 
-        [Test]
+        [Fact]
         public void RequestApprovalFor_LoanAmountEqualToMoreThanYearlyIncomeMinusTotalDebt_IsNotApproved()
         {
             const int loanAmountRequested = 101;
@@ -29,7 +29,7 @@ namespace BankManager.Tests
             Assert.That(loanDetails, Is.EqualTo(LoanDetailsDefaults.UnapprovedDetails));
         }
 
-        [Test]
+        [Fact]
         public void RequestApprovalFor_LoanAmountEqualToLessThanYearlyIncomeMinusTotalDebtAndIsUnderTenThousandDollars_IsApprovedForRequestedAmountForTwelveMonths()
         {
             const int loanAmountRequested = 99;
@@ -43,7 +43,7 @@ namespace BankManager.Tests
             Assert.That(loanDetails, Is.EqualTo(approvalDetails));
         }
 
-        [Test]
+        [Fact]
         public void RequestApprovalFor_LoanAmountEqualToLessThanYearlyIncomeMinusTotalDebtAndIsOverTenThousandDollars_IsApprovedForRequestedAmountForTwentyFourMonths()
         {
             const int loanAmountRequested = 10001;

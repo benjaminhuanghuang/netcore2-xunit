@@ -1,14 +1,13 @@
 using Moq;
-using NUnit.Framework;
+using Xunit;
 
 namespace BankManager.Tests
 {
-    [SetUpFixture]
+    [Fact (Skip = "specific reason")]
     public class GlobalBankManagerTestsSetUpAndTearDown
     {
         public static Mock<ILogger> LoggerFake { get; private set; }
 
-        [SetUp]
         public void BankManagerTestsSetUp()
         {
             var logger = Mock.Of<ILogger>();
